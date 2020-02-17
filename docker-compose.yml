@@ -8,6 +8,7 @@ volumes:
   PRMS_mariadb10:
   PRMS_liam3_mariadb10:
   PRMS_liam3_server:
+  PRMS_liam3_client:
   PRMS_server:
 
 services:
@@ -95,6 +96,21 @@ services:
         - traefik.enable=true
         - traefik.http.routers.PRMS_liam3_server.rule=Host(`PRMS_liam3_server.bpmspace.net`)
         - traefik.http.services.PRMS_liam3_server-service.loadbalancer.server.port=80
+    networks:
+      - proxy-net
+
+  PRMS_liam3_client:
+    image: bpmspace/liam3:liam3_client_master-production_server_master
+    hostname: PRMS_liam3_client
+    volumes:
+    - PRMS_liam3_client:/var/www/html
+    depends_on:
+    - PRMS_liam3_server
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.PRMS_liam3_client.rule=Host(`PRMS_liam3_client.bpmspace.net`)
+        - traefik.http.services.PRMS_liam3_client-service.loadbalancer.server.port=80
     networks:
       - proxy-net
 
