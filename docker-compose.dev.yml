@@ -1,0 +1,180 @@
+version: '3.7'
+
+networks:
+ proxy-net:
+   external: true
+   
+volumes:
+  PRMS_DEV_mariadb10:
+  PRMS_DEV_liam3_mariadb10:
+  PRMS_DEV_liam3_server:
+  PRMS_DEV_liam3_client:
+  PRMS_DEV_server:
+
+services:
+
+  PRMS_DEV_mariadb10:
+    image: mariadb:10.4.8
+    hostname: PRMS_DEV_mariadb10
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes:
+    - PRMS_DEV_mariadb10:/var/lib/mysql
+    environment:
+    - MYSQL_ROOT_PASSWORD=test
+    - MYSQL_DATABASE=test
+    - MYSQL_USER=test
+    - MYSQL_PASSWORD=test
+    networks:
+      - proxy-net 
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+
+  PRMS_DEV_liam3_mariadb10:
+    image: mariadb:10.4.8
+    hostname: PRMS_DEV_liam3_mariadb10
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes:
+    - PRMS_DEV_liam3_mariadb10:/var/lib/mysql
+    environment:
+    - MYSQL_ROOT_PASSWORD=test
+    - MYSQL_DATABASE=test
+    - MYSQL_USER=test
+    - MYSQL_PASSWORD=test
+    networks:
+      - proxy-net 
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+        
+  PRMS_DEV_phpmyadmin-mariadb:
+    image: phpmyadmin/phpmyadmin:4.8.5
+    hostname: PRMS_DEV_phpmyadmin_mariadb10
+    depends_on:
+    - PRMS_DEV_mariadb10
+    environment:
+    - PMA_HOST=PRMS_DEV_mariadb10
+    - PMA_PORT=3306
+    - PMA_USER=test
+    - PMA_PASSWORD=test
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.PRMS_DEV_phpmyadmin-mariadb.rule=Host(`PRMS_DEV_phpmyadmin_mariadb10.bpmspace.net`)
+        - traefik.http.services.PRMS_DEV_phpmyadmin-mariadb-service.loadbalancer.server.port=80
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - proxy-net 
+
+  PRMS_DEV_liam3_phpmyadmin-mariadb:
+    image: phpmyadmin/phpmyadmin:4.8.5
+    hostname: PRMS_DEV_liam3_phpmyadmin_mariadb10
+    depends_on:
+    - PRMS_DEV_liam3_mariadb10
+    environment:
+    - PMA_HOST=PRMS_DEV_liam3_mariadb10
+    - PMA_PORT=3306
+    - PMA_USER=test
+    - PMA_PASSWORD=test
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.PRMS_DEV_liam3_phpmyadmin-mariadb.rule=Host(`PRMS_DEV_liam3_phpmyadmin_mariadb10.bpmspace.net`)
+        - traefik.http.services.PRMS_DEV_liam3_phpmyadmin-mariadb-service.loadbalancer.server.port=80
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - proxy-net
+      
+  PRMS_DEV_liam3_server:
+    image: bpmspace/liam3:liam3_master-production_server_master
+    hostname: PRMS_DEV_liam3_server
+    volumes:
+    - PRMS_DEV_liam3_server:/var/www/html
+    depends_on:
+    - PRMS_DEV_liam3_mariadb10
+    environment:
+    - DB_HOST=PRMS_DEV_liam3_mariadb10
+    - DB_PORT=3306
+    - DB_USER=test
+    - DB_PASSWORD=test
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.PRMS_DEV_liam3_server.rule=Host(`PRMS_DEV_liam3_server.bpmspace.net`)
+        - traefik.http.services.PRMS_DEV_liam3_server-service.loadbalancer.server.port=80
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - proxy-net
+
+  PRMS_DEV_liam3_client:
+    image: bpmspace/liam3_client:liam3_client_master-production_server_master
+    hostname: PRMS_DEV_liam3_client
+    volumes:
+    - PRMS_DEV_liam3_client:/var/www/html
+    depends_on:
+    - PRMS_DEV_liam3_server
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.PRMS_DEV_liam3_client.rule=Host(`PRMS_DEV_liam3_client.bpmspace.net`)
+        - traefik.http.services.PRMS_DEV_liam3_client-service.loadbalancer.server.port=80
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - proxy-net
+
+  PRMS_DEV_server:
+    image: bpmspace/prms:prms_dev-development_server_master
+    hostname: PRMS_DEV_server
+    volumes:
+    - PRMS_DEV_server:/var/www/html
+    depends_on:
+    - PRMS_DEV_mariadb10
+    environment:
+    - DB_HOST=PRMS_DEV_mariadb10
+    - DB_PORT=3306
+    - DB_USER=test
+    - DB_PASSWORD=test
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.PRMS_DEV_server.rule=Host(`PRMS_DEV_server.bpmspace.net`)
+        - traefik.http.services.PRMS_DEV_server-service.loadbalancer.server.port=80
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - proxy-net
+      
+  PRMS_DEV_mailhog:
+    image: mailhog/mailhog
+    hostname: PRMS_DEV_mailhog
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.PRMS_DEV_mailhog.rule=Host(`PRMS_DEV_mailhog.bpmspace.net`)
+        - traefik.http.services.PRMS_DEV_mailhog-service.loadbalancer.server.port=8025
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - proxy-net
+
+  PRMS_DEV_sftp:
+    image: atmoz/sftp
+    hostname: PRMS_DEV_sftp
+    command: developer:pass:1001
+    ports:
+        - "7373:22"
+    volumes:
+    - PRMS_DEV_liam3_server:/home/develop/PRMS_DEV_liam3_server
+    - PRMS_DEV_liam3_client:/home/develop/PRMS_DEV_liam3_client
+    - PRMS_DEV_server:/home/develop/PRMS_DEV_server
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - proxy-net
