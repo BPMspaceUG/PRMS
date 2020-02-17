@@ -30,7 +30,9 @@
                 "show_in_form": true,
                 "col_order": 1,
                 "mode_form": "ro",
-                "field_type": "number"
+                "field_type": "number",
+                "col_options": "",
+                "customclassF": ""
             },
             "prms_project_name": {
                 "column_alias": "Name",
@@ -40,7 +42,9 @@
                 "show_in_form": true,
                 "col_order": 2,
                 "mode_form": "rw",
-                "field_type": "text"
+                "field_type": "text",
+                "col_options": "",
+                "customclassF": ""
             },
             "prms_project_description": {
                 "column_alias": "Description",
@@ -50,7 +54,9 @@
                 "show_in_form": true,
                 "col_order": 3,
                 "mode_form": "rw",
-                "field_type": "textarea"
+                "field_type": "textarea",
+                "col_options": "",
+                "customclassF": ""
             },
             "state_id": {
                 "column_alias": "State id",
@@ -60,7 +66,9 @@
                 "show_in_form": true,
                 "col_order": 4,
                 "mode_form": "ro",
-                "field_type": "state"
+                "field_type": "state",
+                "col_options": "",
+                "customclassF": ""
             }
         },
         "table_icon": "\u003Ci class=\u0022fas fa-project-diagram\u0022\u003E\u003C\/i\u003E"
@@ -84,7 +92,9 @@
                 "show_in_form": true,
                 "col_order": 1,
                 "mode_form": "ro",
-                "field_type": "number"
+                "field_type": "number",
+                "col_options": "",
+                "customclassF": ""
             },
             "prms_project_id_fk_350642": {
                 "column_alias": "350642",
@@ -95,6 +105,8 @@
                 "col_order": 2,
                 "mode_form": "rw",
                 "field_type": "foreignkey",
+                "col_options": "",
+                "customclassF": "",
                 "foreignKey": {
                     "table": "prms_project",
                     "col_id": "prms_project_id",
@@ -110,6 +122,8 @@
                 "col_order": 3,
                 "mode_form": "rw",
                 "field_type": "foreignkey",
+                "col_options": "",
+                "customclassF": "",
                 "foreignKey": {
                     "table": "prms_task",
                     "col_id": "prms_task_id",
@@ -124,7 +138,9 @@
                 "show_in_form": true,
                 "col_order": 4,
                 "mode_form": "ro",
-                "field_type": "state"
+                "field_type": "state",
+                "col_options": "",
+                "customclassF": ""
             }
         },
         "table_icon": "\u003Ci class=\u0022fa fa-square\u0022\u003E\u003C\/i\u003E"
@@ -148,7 +164,9 @@
                 "show_in_form": true,
                 "col_order": 1,
                 "mode_form": "ro",
-                "field_type": "number"
+                "field_type": "number",
+                "col_options": "",
+                "customclassF": ""
             },
             "prms_task_name": {
                 "column_alias": "Name",
@@ -158,7 +176,9 @@
                 "show_in_form": true,
                 "col_order": 2,
                 "mode_form": "rw",
-                "field_type": "text"
+                "field_type": "text",
+                "col_options": "",
+                "customclassF": ""
             },
             "state_id": {
                 "column_alias": "State id",
@@ -168,7 +188,9 @@
                 "show_in_form": true,
                 "col_order": 3,
                 "mode_form": "ro",
-                "field_type": "state"
+                "field_type": "state",
+                "col_options": "",
+                "customclassF": ""
             }
         },
         "table_icon": "\u003Ci class=\u0022fas fa-tasks\u0022\u003E\u003C\/i\u003E"
@@ -192,7 +214,9 @@
                 "show_in_form": true,
                 "col_order": 1,
                 "mode_form": "ro",
-                "field_type": "number"
+                "field_type": "number",
+                "col_options": "",
+                "customclassF": ""
             },
             "role_name": {
                 "column_alias": "Name",
@@ -202,7 +226,9 @@
                 "show_in_form": true,
                 "col_order": 2,
                 "mode_form": "rw",
-                "field_type": "text"
+                "field_type": "text",
+                "col_options": "",
+                "customclassF": ""
             },
             "ConfigDiff": {
                 "column_alias": "ConfigDiff",
@@ -212,7 +238,9 @@
                 "show_in_form": true,
                 "col_order": 3,
                 "mode_form": "rw",
-                "field_type": "textarea"
+                "field_type": "textarea",
+                "col_options": "",
+                "customclassF": ""
             }
         },
         "table_icon": "\u003Ci class=\u0022fa fa-square\u0022\u003E\u003C\/i\u003E"
@@ -236,7 +264,9 @@
                 "show_in_form": true,
                 "col_order": 1,
                 "mode_form": "ro",
-                "field_type": "number"
+                "field_type": "number",
+                "col_options": "",
+                "customclassF": ""
             },
             "role_id": {
                 "column_alias": "Role id",
@@ -247,6 +277,8 @@
                 "col_order": 2,
                 "mode_form": "rw",
                 "field_type": "foreignkey",
+                "col_options": "",
+                "customclassF": "",
                 "foreignKey": {
                     "table": "role",
                     "col_id": "role_id",
@@ -261,7 +293,9 @@
                 "show_in_form": true,
                 "col_order": 3,
                 "mode_form": "rw",
-                "field_type": "number"
+                "field_type": "number",
+                "col_options": "",
+                "customclassF": ""
             }
         },
         "table_icon": "\u003Ci class=\u0022fa fa-square\u0022\u003E\u003C\/i\u003E"
@@ -273,7 +307,7 @@
         "mode": "rw",
         "stdfilter": "",
         "stdsorting": "state_id,DESC",
-        "in_menu": false,
+        "in_menu": true,
         "se_active": false,
         "stateIdSel": 0,
         "columns": {
@@ -285,7 +319,9 @@
                 "show_in_form": true,
                 "col_order": 1,
                 "mode_form": "ro",
-                "field_type": "number"
+                "field_type": "number",
+                "col_options": "",
+                "customclassF": ""
             },
             "name": {
                 "column_alias": "Name",
@@ -295,7 +331,9 @@
                 "show_in_form": true,
                 "col_order": 2,
                 "mode_form": "rw",
-                "field_type": "text"
+                "field_type": "text",
+                "col_options": "",
+                "customclassF": ""
             },
             "entrypoint": {
                 "column_alias": "Entrypoint",
@@ -305,7 +343,9 @@
                 "show_in_form": true,
                 "col_order": 3,
                 "mode_form": "rw",
-                "field_type": "switch"
+                "field_type": "switch",
+                "col_options": "",
+                "customclassF": ""
             },
             "statemachine_id": {
                 "column_alias": "Statemachine id",
@@ -316,6 +356,8 @@
                 "col_order": 4,
                 "mode_form": "rw",
                 "field_type": "foreignkey",
+                "col_options": "",
+                "customclassF": "",
                 "foreignKey": {
                     "table": "state_machines",
                     "col_id": "id",
@@ -330,7 +372,9 @@
                 "show_in_form": true,
                 "col_order": 5,
                 "mode_form": "rw",
-                "field_type": "textarea"
+                "field_type": "textarea",
+                "col_options": "",
+                "customclassF": ""
             },
             "script_OUT": {
                 "column_alias": "Script OUT",
@@ -340,7 +384,9 @@
                 "show_in_form": true,
                 "col_order": 6,
                 "mode_form": "rw",
-                "field_type": "textarea"
+                "field_type": "textarea",
+                "col_options": "",
+                "customclassF": ""
             }
         },
         "table_icon": "\u003Ci class=\u0022fa fa-square\u0022\u003E\u003C\/i\u003E"
@@ -364,7 +410,9 @@
                 "show_in_form": true,
                 "col_order": 1,
                 "mode_form": "ro",
-                "field_type": "number"
+                "field_type": "number",
+                "col_options": "",
+                "customclassF": ""
             },
             "tablename": {
                 "column_alias": "Tablename",
@@ -374,17 +422,21 @@
                 "show_in_form": true,
                 "col_order": 2,
                 "mode_form": "rw",
-                "field_type": "text"
+                "field_type": "text",
+                "col_options": "",
+                "customclassF": ""
             },
             "transition_script": {
                 "column_alias": "Script",
                 "is_primary": false,
                 "is_virtual": false,
-                "show_in_grid": true,
+                "show_in_grid": false,
                 "show_in_form": true,
                 "col_order": 3,
                 "mode_form": "rw",
-                "field_type": "textarea"
+                "field_type": "textarea",
+                "col_options": "",
+                "customclassF": ""
             }
         },
         "table_icon": "\u003Ci class=\u0022fa fa-square\u0022\u003E\u003C\/i\u003E"
@@ -396,7 +448,7 @@
         "mode": "rw",
         "stdfilter": "",
         "stdsorting": "state_rules_id,DESC",
-        "in_menu": false,
+        "in_menu": true,
         "se_active": false,
         "stateIdSel": 0,
         "columns": {
@@ -408,7 +460,9 @@
                 "show_in_form": true,
                 "col_order": 1,
                 "mode_form": "ro",
-                "field_type": "number"
+                "field_type": "number",
+                "col_options": "",
+                "customclassF": ""
             },
             "state_id_FROM": {
                 "column_alias": "FROM",
@@ -419,6 +473,8 @@
                 "col_order": 2,
                 "mode_form": "rw",
                 "field_type": "foreignkey",
+                "col_options": "",
+                "customclassF": "",
                 "foreignKey": {
                     "table": "state",
                     "col_id": "state_id",
@@ -434,6 +490,8 @@
                 "col_order": 3,
                 "mode_form": "rw",
                 "field_type": "foreignkey",
+                "col_options": "",
+                "customclassF": "",
                 "foreignKey": {
                     "table": "state",
                     "col_id": "state_id",
@@ -448,7 +506,9 @@
                 "show_in_form": true,
                 "col_order": 4,
                 "mode_form": "rw",
-                "field_type": "textarea"
+                "field_type": "textarea",
+                "col_options": "",
+                "customclassF": ""
             }
         },
         "table_icon": "\u003Ci class=\u0022fa fa-square\u0022\u003E\u003C\/i\u003E"

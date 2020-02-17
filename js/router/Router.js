@@ -1,5 +1,4 @@
 export default class Router {
-
 	constructor(routes = [], renderNode) {
 		this.routes = routes;
 		this.renderNode = renderNode;
@@ -15,34 +14,32 @@ export default class Router {
 		pathElems.shift();
 		const last = pathElems[pathElems.length - 1];
 		const first = pathElems[0];
+		let table = null;
 		let route = null;
 
 		if (pathElems.length === 1) {
 			// --> Read
 			if (last !== "") {
-				route = this.routes[3];
-				route.setProps({table: last, origin: first});
+				route = this.routes[1];
+				table = last;
+				route.setProps({table, origin: first});
 			}
 		}
-		else if (pathElems.length > 1) {			
-			const prelast = pathElems[pathElems.length - 2];			
+		else if (pathElems.length > 1) {
+			const prelast = pathElems[pathElems.length - 2];
 			if (last === 'workflow') {
-				// --> Workflow
-				route = this.routes[1];
-				route.setProps({table: prelast, origin: first});
-			}
-			else if (last === 'create') {
-				// --> Create
 				route = this.routes[0];
-				route.setProps({table: prelast, origin: first});
-			}
-			else {
-				// --> Modify
-				route = this.routes[2];
-				route.setProps({table: prelast, origin: first});
+				table = prelast;
+				route.setProps({table, origin: first});
 			}
 		}
 		// ===> Output HTML
 		this.renderNode.innerHTML = route ? route.renderView() : document.location.assign('#/dashboard');
+		// Link active
+		const btns = document.getElementsByClassName('list-group-item-action');
+		[...btns].map(b => {
+			b.classList.remove('active');
+			if (b.getAttribute('href') === '#/' + table) b.classList.add('active');
+		});
 	}
 }

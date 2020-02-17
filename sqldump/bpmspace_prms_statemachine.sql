@@ -32,7 +32,7 @@ CREATE TABLE `state` (
   PRIMARY KEY (`state_id`),
   KEY `state_machine_id_fk` (`statemachine_id`),
   CONSTRAINT `state_machine_id_fk` FOREIGN KEY (`statemachine_id`) REFERENCES `state_machines` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `state` (
 
 LOCK TABLES `state` WRITE;
 /*!40000 ALTER TABLE `state` DISABLE KEYS */;
-INSERT INTO `state` VALUES (1,'new',1,1,NULL,NULL),(2,'active',0,1,NULL,NULL),(3,'update',0,1,NULL,NULL),(4,'inactive',0,1,NULL,NULL),(5,'selected',1,2,NULL,NULL),(6,'unselected',0,2,NULL,NULL),(7,'new',1,3,NULL,NULL),(8,'active',0,3,NULL,NULL),(9,'update',0,3,NULL,NULL),(10,'inactive',0,3,NULL,NULL);
+INSERT INTO `state` VALUES (1,'new',1,1,NULL,NULL),(2,'initated',0,1,'',''),(3,'update',0,1,NULL,NULL),(4,'planned',0,1,'',''),(5,'selected',1,2,NULL,NULL),(6,'unselected',0,2,NULL,NULL),(7,'new',1,3,NULL,NULL),(8,'active',0,3,NULL,NULL),(9,'update',0,3,NULL,NULL),(10,'inactive',0,3,NULL,NULL),(11,'cancel',0,1,'',''),(12,'agreed',0,1,'',''),(13,'succesfull',0,1,'',''),(14,'not succesfull',0,1,'','');
 /*!40000 ALTER TABLE `state` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -87,7 +87,7 @@ CREATE TABLE `state_rules` (
   KEY `state_id_fk_to_idx` (`state_id_TO`),
   CONSTRAINT `state_id_fk_from` FOREIGN KEY (`state_id_FROM`) REFERENCES `state` (`state_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `state_id_fk_to` FOREIGN KEY (`state_id_TO`) REFERENCES `state` (`state_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,7 +96,7 @@ CREATE TABLE `state_rules` (
 
 LOCK TABLES `state_rules` WRITE;
 /*!40000 ALTER TABLE `state_rules` DISABLE KEYS */;
-INSERT INTO `state_rules` VALUES (1,1,1,'include_once(__DIR__.\'/../_state_rules/1.php\');'),(2,3,3,'include_once(__DIR__.\'/../_state_rules/2.php\');'),(3,1,2,'include_once(__DIR__.\'/../_state_rules/3.php\');'),(4,2,3,'include_once(__DIR__.\'/../_state_rules/4.php\');'),(5,3,2,'include_once(__DIR__.\'/../_state_rules/5.php\');'),(6,2,4,'include_once(__DIR__.\'/../_state_rules/6.php\');'),(7,5,6,'include_once(__DIR__.\'/../_state_rules/7.php\');'),(8,6,5,'include_once(__DIR__.\'/../_state_rules/8.php\');'),(9,7,7,'include_once(__DIR__.\'/../_state_rules/9.php\');'),(10,9,9,'include_once(__DIR__.\'/../_state_rules/10.php\');'),(11,7,8,'include_once(__DIR__.\'/../_state_rules/11.php\');'),(12,8,9,'include_once(__DIR__.\'/../_state_rules/12.php\');'),(13,9,8,'include_once(__DIR__.\'/../_state_rules/13.php\');'),(14,8,10,'include_once(__DIR__.\'/../_state_rules/14.php\');');
+INSERT INTO `state_rules` VALUES (1,1,1,'include_once(__DIR__.\'/../_state_rules/1.php\');'),(2,3,3,'include_once(__DIR__.\'/../_state_rules/2.php\');'),(3,1,2,'include_once(__DIR__.\'/../_state_rules/3.php\');'),(4,2,3,'include_once(__DIR__.\'/../_state_rules/4.php\');'),(5,3,2,'include_once(__DIR__.\'/../_state_rules/5.php\');'),(6,2,4,'include_once(__DIR__.\'/../_state_rules/6.php\');'),(7,5,6,'include_once(__DIR__.\'/../_state_rules/7.php\');'),(8,6,5,'include_once(__DIR__.\'/../_state_rules/8.php\');'),(9,7,7,'include_once(__DIR__.\'/../_state_rules/9.php\');'),(10,9,9,'include_once(__DIR__.\'/../_state_rules/10.php\');'),(11,7,8,'include_once(__DIR__.\'/../_state_rules/11.php\');'),(12,8,9,'include_once(__DIR__.\'/../_state_rules/12.php\');'),(13,9,8,'include_once(__DIR__.\'/../_state_rules/13.php\');'),(14,8,10,'include_once(__DIR__.\'/../_state_rules/14.php\');'),(16,4,11,'include_once(__DIR__.\'/../_state_rules/16.php\');'),(17,4,12,'include_once(__DIR__.\'/../_state_rules/17.php\');'),(18,4,2,'include_once(__DIR__.\'/../_state_rules/18.php\');'),(19,12,14,'include_once(__DIR__.\'/../_state_rules/19.php\');'),(20,12,13,'include_once(__DIR__.\'/../_state_rules/20.php\');');
 /*!40000 ALTER TABLE `state_rules` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -113,4 +113,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-17 13:12:59
+-- Dump completed on 2020-02-17 14:28:37

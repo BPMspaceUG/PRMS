@@ -177,7 +177,7 @@
       // Collect only virtual Columns
       foreach ($cols as $colname => $col) {
         if ($col["is_virtual"] && $col["field_type"] != "reversefk")
-          $res[] = $colname;
+          $res[] = '`'.$colname.'`';
       }
       return $res;
     }
@@ -523,25 +523,25 @@
       if (!is_null($stdFilter) && !empty($stdFilter))
       $rq->setFilter($stdFilter); // standard Filter (set serverside!)
       
+
       //--- Search (Having & all columns)
       if (!is_null($search)) {
         $search = "%".$search."%";
-        $els = [];
-        //-- Search real cols + virtCols + joins
-        $cols = array_merge(
-          Config::getColnamesByTablename($tablename),
-          Config::getVirtualColnames($tablename),
-          Config::getJoinedColnames($tablename)
-        );
-        foreach ($cols as $colname) {
-          $els[] = '{"like":["'.$colname.'","'.$search.'"]}';
-        }
-        $term = '{"or":['. implode(',', $els) .']}';
-        $rq->setHaving($term);
+        //-- Search virtCols ===> Having only searches the where results!!
         /*
-        echo $rq->getStatement() . "\n\n";
-        var_dump($rq->getValues());
+        $els = [];
+        $cols = Config::getVirtualColnames($tablename);
+        foreach ($cols as $colname) $els[] = '{"like":["'.$colname.'","'.$search.'"]}';
+        if (count($els) > 0) $rq->setHaving('{"or":['. implode(',', $els) .']}');
         */
+        //---- Filter
+        $els = [];
+        $cols = array_merge(Config::getColnamesByTablename($tablename), Config::getJoinedColnames($tablename));
+        foreach ($cols as $colname) $els[] = '{"like":["'.$colname.'","'.$search.'"]}';
+        if (count($els) > 0) $rq->addFilter('{"or":['. implode(',', $els) .']}');
+        
+        //echo $rq->getStatement() . "\n\n";
+        //var_dump($rq->getValues());        
       }
       //--- add Custom Filter
       if (!is_null($filter))
@@ -588,7 +588,7 @@
       // Retrieve Number of Entries
       $count = 0;
       $stmtCnt = $pdo->prepare($rq->getCountStmtWOLimits());
-      if ($stmtCnt->execute($rq->getValues(true))) {
+      if ($stmtCnt->execute($rq->getValues())) {
         $row = $stmtCnt->fetch();
         $count = (int)$row[0];
       }
@@ -610,6 +610,7 @@
     }
     // Stored Procedure can be Read and Write (GET and POST)
     public function call($param) {
+      $param = json_decode(json_encode($param), true); // Hack ==> TODO: Remove!
       // Strcuture: {name: "sp_table", inputs: ["test", 13, 42, "2019-01-01"]}
       //--------------------- Check Params
       $validParams = ['name', 'inputs', 'path'];
@@ -640,6 +641,7 @@
     }
     // [POST] Creating
     public function create($param) {
+      $param = json_decode(json_encode($param), true); // Hack ==> TODO: Remove!
       // Inputs
       $tablename = $param["table"];
       $row = $param["row"];
@@ -878,6 +880,7 @@
     }
     private function create($table, $row, $pathStr = "") {
       @$pcol = array_keys($row)[0];
+      //echo "+ $table\n";
       $resp = api(["cmd"=>"create", "param"=>["table"=>$table, "path"=>$pathStr, "row"=>$row]]);
       $res = json_decode($resp, true);
       $this->log[] = $res;
@@ -928,43 +931,87 @@
     }
     private function walk($x, $k=null, $layer=-1, &$path=[], $outLog = "") {
       if (is_array($x)) {
-        // 🌱 Twig = Edge
+        //---> Relation
         $layer++;                
         foreach ($x as $key => $value)
           $this->walk($value, $k, $layer, $path, $outLog);
       }
       else if (is_object($x)) {
-        // 🍂 Leaf = Object
+        //---> Object
         $arr = (array)$x;
         if (!is_null($k)) {
           // Clone Array and remove all sub arrays for multidimensional array
           $array = (array)clone(object)$arr;
-          foreach($array as $ki => $a)
-            if (is_array($a)) unset($array[$ki]);
+
+          //------------ Create normal Foreign Keys (obj/obj)
+          foreach($array as $ki => $a) {
+            if (is_object($a)) {
+              // belongs to (FK)
+              $fkTable = null;
+              $cols = Config::getColsByTablename($k);
+              foreach ($cols as $colname => $col) {
+                if ($colname === $ki) {
+                  $fkTable = $col["foreignKey"]["table"];
+                  break;
+                }
+              }
+              if (!is_null($fkTable)) {
+                $newFKObj = (array)$a;
+                $newFkObjectID = $this->create($fkTable, $newFKObj);
+                $array[$ki] = $newFkObjectID; // Replace FK with Object
+              }
+            }
+          }
+
           // Clear all parts after actual layer
           $path = array_slice($path, 0, $layer + 1);
           // Build the create Path
           $leaf = $k."/create";
           $path[$layer] = $leaf;                    
           $pathStr = implode('/', $path);
-          // CREATE and relate Object
+          //echo "---> $pathStr\n";
+          //====> CREATE and relate Object
           $res = $this->createAndRelate(explode('/', $pathStr), $array);
           $objID = $res[2]; // the new ID
           // Modify Path
           $leaf = $k."/".$objID;
           $path[$layer] = $leaf;
-          // Debug-Log:
-          if ($objID != 0) {
-            //echo "[".count($path).'] <span style="color:green;">'.implode('/', $path)."</span>\n";
-            //$outLog = $objID;
+
+          //----------------- Create has many (reverse FKs)
+          foreach($array as $ki => $a) {
+            if (is_array($a)) {
+              // has many (reverse FK)
+              // Load config from Table and look for referencing keys
+              $cols = Config::getColsByTablename($ki);
+              foreach ($cols as $colname => $col) {
+                if (array_key_exists("foreignKey", $col) && $col["foreignKey"]["table"] === $k) {
+                  $fkTable = $ki;
+                  // Loop Elements and create all
+                  $fkObjs = $a;
+                  $fkColName = $col["foreignKey"]["col_id"];
+                  foreach ($fkObjs as $obj) {
+                    $newFKObj = (array)$obj;
+                    $newFKObj[$fkColName] = $objID; // Set Link to myself
+                    $this->create($fkTable, $newFKObj);
+                  }
+                  break;
+                }
+              }
+              // unset($array[$ki]); // Why?
+            }
           }
-          else {
-            // Error
-            //echo "[".count($path).'] <span style="color:red;">'.implode('/', $path)."</span> <b>ERROR</b>\n";
-          }
+          //---- Debug-Log:
+          /*
+          if ($objID != 0)
+            echo "[".count($path).'] <span style="color:green;">'.implode('/', $path)."</span>\n";
+          else // Error
+            echo "[".count($path).'] <span style="color:red;">'.implode('/', $path)."</span> <b>ERROR</b>\n";
+          */
         }
-        foreach ($arr as $key => $value)
+        // Go deeper!
+        foreach ($arr as $key => $value) {
           $this->walk($value, $key, $layer, $path, $outLog);
+        }
       }
     }
     public function __construct() {
