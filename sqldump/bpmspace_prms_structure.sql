@@ -77,7 +77,7 @@ CREATE TABLE `prms_project` (
   PRIMARY KEY (`prms_project_id`),
   KEY `state_id_01d918ae` (`state_id`),
   CONSTRAINT `state_id_01d918ae` FOREIGN KEY (`state_id`) REFERENCES `state` (`state_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -99,7 +99,7 @@ CREATE TABLE `prms_project_task` (
   CONSTRAINT `prms_project_task_ibfk_1` FOREIGN KEY (`prms_project_id_fk_350642`) REFERENCES `prms_project` (`prms_project_id`),
   CONSTRAINT `prms_project_task_ibfk_2` FOREIGN KEY (`prms_task_id_fk_516161`) REFERENCES `prms_task` (`prms_task_id`),
   CONSTRAINT `state_id_490029f5` FOREIGN KEY (`state_id`) REFERENCES `state` (`state_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -116,7 +116,7 @@ CREATE TABLE `prms_task` (
   PRIMARY KEY (`prms_task_id`),
   KEY `state_id_b3b953bf` (`state_id`),
   CONSTRAINT `state_id_b3b953bf` FOREIGN KEY (`state_id`) REFERENCES `state` (`state_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -272,4 +272,4 @@ CREATE TABLE `state_rules` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-17 14:28:37
+-- Dump completed on 2020-02-17 14:38:01
