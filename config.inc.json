@@ -1,0 +1,456 @@
+{
+    "dashboard": {
+        "table_alias": "Dashboard",
+        "table_icon": "\u003Ci class=\u0022far fa-star\u0022\u003E\u003C\/i\u003E",
+        "href": "#",
+        "order": 0,
+        "mode": "ro",
+        "in_menu": true,
+        "se_active": false,
+        "is_virtual": true,
+        "columns": [],
+        "table_type": "obj"
+    },
+    "prms_project": {
+        "table_alias": "Project",
+        "table_type": "obj",
+        "order": 1,
+        "mode": "rw",
+        "stdfilter": "",
+        "stdsorting": "prms_project_id,DESC",
+        "in_menu": true,
+        "se_active": true,
+        "stateIdSel": 0,
+        "columns": {
+            "prms_project_id": {
+                "column_alias": "Project id",
+                "is_primary": true,
+                "is_virtual": false,
+                "show_in_grid": true,
+                "show_in_form": true,
+                "col_order": 1,
+                "mode_form": "ro",
+                "field_type": "number"
+            },
+            "prms_project_name": {
+                "column_alias": "Name",
+                "is_primary": false,
+                "is_virtual": false,
+                "show_in_grid": true,
+                "show_in_form": true,
+                "col_order": 2,
+                "mode_form": "rw",
+                "field_type": "text"
+            },
+            "prms_project_description": {
+                "column_alias": "Description",
+                "is_primary": false,
+                "is_virtual": false,
+                "show_in_grid": true,
+                "show_in_form": true,
+                "col_order": 3,
+                "mode_form": "rw",
+                "field_type": "textarea"
+            },
+            "state_id": {
+                "column_alias": "State id",
+                "is_primary": false,
+                "is_virtual": false,
+                "show_in_grid": true,
+                "show_in_form": true,
+                "col_order": 4,
+                "mode_form": "ro",
+                "field_type": "state"
+            }
+        },
+        "table_icon": "\u003Ci class=\u0022fas fa-project-diagram\u0022\u003E\u003C\/i\u003E"
+    },
+    "prms_project_task": {
+        "table_alias": "Task",
+        "table_type": "1_n",
+        "order": 2,
+        "mode": "rw",
+        "stdfilter": "",
+        "stdsorting": "prms_project_task_id,DESC",
+        "in_menu": false,
+        "se_active": true,
+        "stateIdSel": 0,
+        "columns": {
+            "prms_project_task_id": {
+                "column_alias": "Task id",
+                "is_primary": true,
+                "is_virtual": false,
+                "show_in_grid": true,
+                "show_in_form": true,
+                "col_order": 1,
+                "mode_form": "ro",
+                "field_type": "number"
+            },
+            "prms_project_id_fk_350642": {
+                "column_alias": "350642",
+                "is_primary": false,
+                "is_virtual": false,
+                "show_in_grid": true,
+                "show_in_form": true,
+                "col_order": 2,
+                "mode_form": "rw",
+                "field_type": "foreignkey",
+                "foreignKey": {
+                    "table": "prms_project",
+                    "col_id": "prms_project_id",
+                    "col_subst": "*"
+                }
+            },
+            "prms_task_id_fk_516161": {
+                "column_alias": "516161",
+                "is_primary": false,
+                "is_virtual": false,
+                "show_in_grid": true,
+                "show_in_form": true,
+                "col_order": 3,
+                "mode_form": "rw",
+                "field_type": "foreignkey",
+                "foreignKey": {
+                    "table": "prms_task",
+                    "col_id": "prms_task_id",
+                    "col_subst": "*"
+                }
+            },
+            "state_id": {
+                "column_alias": "State id",
+                "is_primary": false,
+                "is_virtual": false,
+                "show_in_grid": true,
+                "show_in_form": true,
+                "col_order": 4,
+                "mode_form": "ro",
+                "field_type": "state"
+            }
+        },
+        "table_icon": "\u003Ci class=\u0022fa fa-square\u0022\u003E\u003C\/i\u003E"
+    },
+    "prms_task": {
+        "table_alias": "Task",
+        "table_type": "obj",
+        "order": 3,
+        "mode": "rw",
+        "stdfilter": "",
+        "stdsorting": "prms_task_id,DESC",
+        "in_menu": true,
+        "se_active": true,
+        "stateIdSel": 0,
+        "columns": {
+            "prms_task_id": {
+                "column_alias": "Task id",
+                "is_primary": true,
+                "is_virtual": false,
+                "show_in_grid": true,
+                "show_in_form": true,
+                "col_order": 1,
+                "mode_form": "ro",
+                "field_type": "number"
+            },
+            "prms_task_name": {
+                "column_alias": "Name",
+                "is_primary": false,
+                "is_virtual": false,
+                "show_in_grid": true,
+                "show_in_form": true,
+                "col_order": 2,
+                "mode_form": "rw",
+                "field_type": "text"
+            },
+            "state_id": {
+                "column_alias": "State id",
+                "is_primary": false,
+                "is_virtual": false,
+                "show_in_grid": true,
+                "show_in_form": true,
+                "col_order": 3,
+                "mode_form": "ro",
+                "field_type": "state"
+            }
+        },
+        "table_icon": "\u003Ci class=\u0022fas fa-tasks\u0022\u003E\u003C\/i\u003E"
+    },
+    "role": {
+        "table_alias": "Role",
+        "table_type": "obj",
+        "order": 4,
+        "mode": "rw",
+        "stdfilter": "",
+        "stdsorting": "role_id,DESC",
+        "in_menu": false,
+        "se_active": false,
+        "stateIdSel": 0,
+        "columns": {
+            "role_id": {
+                "column_alias": "Role id",
+                "is_primary": true,
+                "is_virtual": false,
+                "show_in_grid": true,
+                "show_in_form": true,
+                "col_order": 1,
+                "mode_form": "ro",
+                "field_type": "number"
+            },
+            "role_name": {
+                "column_alias": "Name",
+                "is_primary": false,
+                "is_virtual": false,
+                "show_in_grid": true,
+                "show_in_form": true,
+                "col_order": 2,
+                "mode_form": "rw",
+                "field_type": "text"
+            },
+            "ConfigDiff": {
+                "column_alias": "ConfigDiff",
+                "is_primary": false,
+                "is_virtual": false,
+                "show_in_grid": true,
+                "show_in_form": true,
+                "col_order": 3,
+                "mode_form": "rw",
+                "field_type": "textarea"
+            }
+        },
+        "table_icon": "\u003Ci class=\u0022fa fa-square\u0022\u003E\u003C\/i\u003E"
+    },
+    "role_user": {
+        "table_alias": "User",
+        "table_type": "obj",
+        "order": 5,
+        "mode": "rw",
+        "stdfilter": "",
+        "stdsorting": "role_user_id,DESC",
+        "in_menu": false,
+        "se_active": false,
+        "stateIdSel": 0,
+        "columns": {
+            "role_user_id": {
+                "column_alias": "User id",
+                "is_primary": true,
+                "is_virtual": false,
+                "show_in_grid": true,
+                "show_in_form": true,
+                "col_order": 1,
+                "mode_form": "ro",
+                "field_type": "number"
+            },
+            "role_id": {
+                "column_alias": "Role id",
+                "is_primary": false,
+                "is_virtual": false,
+                "show_in_grid": true,
+                "show_in_form": true,
+                "col_order": 2,
+                "mode_form": "rw",
+                "field_type": "foreignkey",
+                "foreignKey": {
+                    "table": "role",
+                    "col_id": "role_id",
+                    "col_subst": "*"
+                }
+            },
+            "user_id": {
+                "column_alias": "User id",
+                "is_primary": false,
+                "is_virtual": false,
+                "show_in_grid": true,
+                "show_in_form": true,
+                "col_order": 3,
+                "mode_form": "rw",
+                "field_type": "number"
+            }
+        },
+        "table_icon": "\u003Ci class=\u0022fa fa-square\u0022\u003E\u003C\/i\u003E"
+    },
+    "state": {
+        "table_alias": "State",
+        "table_type": "obj",
+        "order": 6,
+        "mode": "rw",
+        "stdfilter": "",
+        "stdsorting": "state_id,DESC",
+        "in_menu": false,
+        "se_active": false,
+        "stateIdSel": 0,
+        "columns": {
+            "state_id": {
+                "column_alias": "State id",
+                "is_primary": true,
+                "is_virtual": false,
+                "show_in_grid": true,
+                "show_in_form": true,
+                "col_order": 1,
+                "mode_form": "ro",
+                "field_type": "number"
+            },
+            "name": {
+                "column_alias": "Name",
+                "is_primary": false,
+                "is_virtual": false,
+                "show_in_grid": true,
+                "show_in_form": true,
+                "col_order": 2,
+                "mode_form": "rw",
+                "field_type": "text"
+            },
+            "entrypoint": {
+                "column_alias": "Entrypoint",
+                "is_primary": false,
+                "is_virtual": false,
+                "show_in_grid": true,
+                "show_in_form": true,
+                "col_order": 3,
+                "mode_form": "rw",
+                "field_type": "switch"
+            },
+            "statemachine_id": {
+                "column_alias": "Statemachine id",
+                "is_primary": false,
+                "is_virtual": false,
+                "show_in_grid": true,
+                "show_in_form": true,
+                "col_order": 4,
+                "mode_form": "rw",
+                "field_type": "foreignkey",
+                "foreignKey": {
+                    "table": "state_machines",
+                    "col_id": "id",
+                    "col_subst": "{\u0022tablename\u0022: 1}"
+                }
+            },
+            "script_IN": {
+                "column_alias": "Script IN",
+                "is_primary": false,
+                "is_virtual": false,
+                "show_in_grid": true,
+                "show_in_form": true,
+                "col_order": 5,
+                "mode_form": "rw",
+                "field_type": "textarea"
+            },
+            "script_OUT": {
+                "column_alias": "Script OUT",
+                "is_primary": false,
+                "is_virtual": false,
+                "show_in_grid": true,
+                "show_in_form": true,
+                "col_order": 6,
+                "mode_form": "rw",
+                "field_type": "textarea"
+            }
+        },
+        "table_icon": "\u003Ci class=\u0022fa fa-square\u0022\u003E\u003C\/i\u003E"
+    },
+    "state_machines": {
+        "table_alias": "Machines",
+        "table_type": "obj",
+        "order": 7,
+        "mode": "rw",
+        "stdfilter": "",
+        "stdsorting": "id,DESC",
+        "in_menu": false,
+        "se_active": false,
+        "stateIdSel": 0,
+        "columns": {
+            "id": {
+                "column_alias": "Id",
+                "is_primary": true,
+                "is_virtual": false,
+                "show_in_grid": true,
+                "show_in_form": true,
+                "col_order": 1,
+                "mode_form": "ro",
+                "field_type": "number"
+            },
+            "tablename": {
+                "column_alias": "Tablename",
+                "is_primary": false,
+                "is_virtual": false,
+                "show_in_grid": true,
+                "show_in_form": true,
+                "col_order": 2,
+                "mode_form": "rw",
+                "field_type": "text"
+            },
+            "transition_script": {
+                "column_alias": "Script",
+                "is_primary": false,
+                "is_virtual": false,
+                "show_in_grid": true,
+                "show_in_form": true,
+                "col_order": 3,
+                "mode_form": "rw",
+                "field_type": "textarea"
+            }
+        },
+        "table_icon": "\u003Ci class=\u0022fa fa-square\u0022\u003E\u003C\/i\u003E"
+    },
+    "state_rules": {
+        "table_alias": "Rules",
+        "table_type": "n_m",
+        "order": 8,
+        "mode": "rw",
+        "stdfilter": "",
+        "stdsorting": "state_rules_id,DESC",
+        "in_menu": false,
+        "se_active": false,
+        "stateIdSel": 0,
+        "columns": {
+            "state_rules_id": {
+                "column_alias": "Rules id",
+                "is_primary": true,
+                "is_virtual": false,
+                "show_in_grid": true,
+                "show_in_form": true,
+                "col_order": 1,
+                "mode_form": "ro",
+                "field_type": "number"
+            },
+            "state_id_FROM": {
+                "column_alias": "FROM",
+                "is_primary": false,
+                "is_virtual": false,
+                "show_in_grid": true,
+                "show_in_form": true,
+                "col_order": 2,
+                "mode_form": "rw",
+                "field_type": "foreignkey",
+                "foreignKey": {
+                    "table": "state",
+                    "col_id": "state_id",
+                    "col_subst": "{\u0022name\u0022: 1}"
+                }
+            },
+            "state_id_TO": {
+                "column_alias": "Id TO",
+                "is_primary": false,
+                "is_virtual": false,
+                "show_in_grid": true,
+                "show_in_form": true,
+                "col_order": 3,
+                "mode_form": "rw",
+                "field_type": "foreignkey",
+                "foreignKey": {
+                    "table": "state",
+                    "col_id": "state_id",
+                    "col_subst": "{\u0022name\u0022: 1}"
+                }
+            },
+            "transition_script": {
+                "column_alias": "Script",
+                "is_primary": false,
+                "is_virtual": false,
+                "show_in_grid": true,
+                "show_in_form": true,
+                "col_order": 4,
+                "mode_form": "rw",
+                "field_type": "textarea"
+            }
+        },
+        "table_icon": "\u003Ci class=\u0022fa fa-square\u0022\u003E\u003C\/i\u003E"
+    }
+}
