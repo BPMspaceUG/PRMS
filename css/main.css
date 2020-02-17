@@ -53,17 +53,17 @@ td.controllcoulm {text-align: center; min-width: 50px; width: 50px; max-width:50
 .btnDisabled:focus, .btnDisabled:active:focus, .btnDisabled.active:focus {outline: none !important; outline-style: none; box-shadow: none !important;}
 .btnDisabled:hover {background-color: none !important; cursor: default;}
 /* State-Colors */
-.state1 {background-color: hsl(311, 50%, 15%); color: white;}
-.state2 {background-color: hsl(311, 50%, 20%); color: white;}
-.state3 {background-color: hsl(311, 50%, 25%); color: white;}
-.state4 {background-color: hsl(311, 50%, 30%); color: white;}
-.state11 {background-color: hsl(311, 50%, 35%); color: white;}
-.state12 {background-color: hsl(311, 50%, 40%); color: white;}
-.state13 {background-color: hsl(311, 50%, 45%); color: white;}
-.state14 {background-color: hsl(311, 50%, 50%); color: white;}
+.state1 {background-color: hsl(207, 50%, 15%); color: white;}
+.state2 {background-color: hsl(207, 50%, 20%); color: white;}
+.state3 {background-color: hsl(207, 50%, 25%); color: white;}
+.state4 {background-color: hsl(207, 50%, 30%); color: white;}
+.state11 {background-color: hsl(207, 50%, 35%); color: white;}
+.state12 {background-color: hsl(207, 50%, 40%); color: white;}
+.state13 {background-color: hsl(207, 50%, 45%); color: white;}
+.state14 {background-color: hsl(207, 50%, 50%); color: white;}
 .state5 {background-color: #328332; color: white;}
 .state6 {background-color: #8b0000; color: white;}
-.state7 {background-color: hsl(233, 50%, 15%); color: white;}
-.state8 {background-color: hsl(233, 50%, 20%); color: white;}
-.state9 {background-color: hsl(233, 50%, 25%); color: white;}
-.state10 {background-color: hsl(233, 50%, 30%); color: white;}
+.state7 {background-color: hsl(123, 50%, 15%); color: white;}
+.state8 {background-color: hsl(123, 50%, 20%); color: white;}
+.state9 {background-color: hsl(123, 50%, 25%); color: white;}
+.state10 {background-color: hsl(123, 50%, 30%); color: white;}

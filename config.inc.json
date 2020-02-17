@@ -50,11 +50,23 @@
                 "column_alias": "Description",
                 "is_primary": false,
                 "is_virtual": false,
-                "show_in_grid": true,
-                "show_in_form": true,
+                "show_in_grid": false,
+                "show_in_form": false,
                 "col_order": 3,
                 "mode_form": "rw",
                 "field_type": "textarea",
+                "col_options": "",
+                "customclassF": ""
+            },
+            "prms_project_budget": {
+                "column_alias": "Budget (hours)",
+                "is_primary": false,
+                "is_virtual": false,
+                "show_in_grid": true,
+                "show_in_form": false,
+                "col_order": 4,
+                "mode_form": "rw",
+                "field_type": "number",
                 "col_options": "",
                 "customclassF": ""
             },
@@ -71,7 +83,8 @@
                 "customclassF": ""
             }
         },
-        "table_icon": "\u003Ci class=\u0022fas fa-project-diagram\u0022\u003E\u003C\/i\u003E"
+        "table_icon": "\u003Ci class=\u0022fas fa-project-diagram\u0022\u003E\u003C\/i\u003E",
+        "showKids": true
     },
     "prms_project_task": {
         "table_alias": "Task",
