@@ -74,11 +74,12 @@ CREATE TABLE `prms_project` (
   `prms_project_name` varchar(256) DEFAULT NULL,
   `prms_project_description` mediumtext,
   `prms_project_budget` int(11) DEFAULT NULL,
+  `prms_project_history` longtext,
   `state_id` bigint(20) DEFAULT '1',
   PRIMARY KEY (`prms_project_id`),
   KEY `state_id_01d918ae` (`state_id`),
   CONSTRAINT `state_id_01d918ae` FOREIGN KEY (`state_id`) REFERENCES `state` (`state_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -113,6 +114,11 @@ DROP TABLE IF EXISTS `prms_task`;
 CREATE TABLE `prms_task` (
   `prms_task_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `prms_task_name` varchar(256) DEFAULT NULL,
+  `prms_task_history` text,
+  `prms_task_description` text,
+  `prms_task_duration_planned` int(11) DEFAULT NULL,
+  `prms_task_duration_real` int(11) DEFAULT NULL,
+  `prms_task_type` enum('plan','dev') DEFAULT NULL,
   `state_id` bigint(20) DEFAULT '7',
   PRIMARY KEY (`prms_task_id`),
   KEY `state_id_b3b953bf` (`state_id`),
@@ -273,4 +279,4 @@ CREATE TABLE `state_rules` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-18 13:42:45
+-- Dump completed on 2020-02-18 15:01:34

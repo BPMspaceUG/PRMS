@@ -1,34 +1,38 @@
 <?php
-    $allow = false;
+    $allow = [];
     $msg = "";
 
     //--- Input
     $prjname = $param["row"]["prms_project_name"];
     $prjdesc = $param["row"]["prms_project_description"];
-	$prjbudg = $param["row"]["prms_project_budget"];
+	$prjbudg = (int)$param["row"]["prms_project_budget"];
 
     // Check if name is not empty
-    $allow = (!empty($prjname));
-    if (!$allow) $msg .= "Name can not be empty!<br>";
+    $allowThis = (!empty($prjname));
+    if (!$allowThis) $msg .= "Name can not be empty!<br>";
+    $allow[] = $allowThis;
 
     // Check if Description is not empty
-    $allow = (!empty($prjdesc));
-    if (!$allow) $msg .= "Description can not be empty!<br>";
+    $allowThis = (!empty($prjdesc));
+    if (!$allowThis) $msg .= "Description can not be empty!<br>";
+    $allow[] = $allowThis;
 
-	// Check if Budget greater 0
-    $allow = ($prjbudg > 0);
-    if (!$allow) $msg .= "Budget has to be > 0!<br>";
-	
+    // Check if Budget > 0
+    $allowThis = ($prjbudg > 0);
+    if (!$allowThis) $msg .= "Budget has to be > 0!<br>";
+    $allow[] = $allowThis;
+
     // Check Description
     $minLen = 100;
     if (strlen($prjdesc) > 0) {
-        $allow = (strlen($prjdesc) >= $minLen);
-        if (!$allow) $msg .= "Description must have min. $minLen Chars!<br>";
+        $allowThis = (strlen($prjdesc) >= $minLen);
+        if (!$allowThis) $msg .= "Description must have min. $minLen Chars!<br>";
     }
+    $allow[] = $allowThis;
 
     //--- Output
     $script_result = [
-        "allow_transition" => $allow,
+        "allow_transition" => array_unique($allow)[0] === true && count(array_unique($allow)) === 1,
         "show_message" => strlen($msg) > 0,
         "message" => $msg
     ];

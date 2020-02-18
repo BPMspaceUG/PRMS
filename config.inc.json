@@ -70,6 +70,18 @@
                 "col_options": "",
                 "customclassF": ""
             },
+            "prms_project_history": {
+                "column_alias": "History",
+                "is_primary": false,
+                "is_virtual": false,
+                "show_in_grid": false,
+                "show_in_form": false,
+                "col_order": 5,
+                "mode_form": "rw",
+                "field_type": "textarea",
+                "col_options": "",
+                "customclassF": ""
+            },
             "state_id": {
                 "column_alias": "State id",
                 "is_primary": false,
@@ -84,7 +96,7 @@
             }
         },
         "table_icon": "\u003Ci class=\u0022fas fa-project-diagram\u0022\u003E\u003C\/i\u003E",
-        "showKids": true
+        "showKids": false
     },
     "prms_project_task": {
         "table_alias": "Task",
@@ -193,6 +205,66 @@
                 "col_options": "",
                 "customclassF": ""
             },
+            "prms_task_history": {
+                "column_alias": "History",
+                "is_primary": false,
+                "is_virtual": false,
+                "show_in_grid": false,
+                "show_in_form": false,
+                "col_order": 3,
+                "mode_form": "rw",
+                "field_type": "text",
+                "col_options": "",
+                "customclassF": ""
+            },
+            "prms_task_description": {
+                "column_alias": "Description",
+                "is_primary": false,
+                "is_virtual": false,
+                "show_in_grid": false,
+                "show_in_form": false,
+                "col_order": 4,
+                "mode_form": "rw",
+                "field_type": "text",
+                "col_options": "",
+                "customclassF": ""
+            },
+            "prms_task_duration_planned": {
+                "column_alias": "Planned",
+                "is_primary": false,
+                "is_virtual": false,
+                "show_in_grid": false,
+                "show_in_form": false,
+                "col_order": 5,
+                "mode_form": "rw",
+                "field_type": "number",
+                "col_options": "",
+                "customclassF": ""
+            },
+            "prms_task_duration_real": {
+                "column_alias": "Real",
+                "is_primary": false,
+                "is_virtual": false,
+                "show_in_grid": false,
+                "show_in_form": false,
+                "col_order": 6,
+                "mode_form": "rw",
+                "field_type": "number",
+                "col_options": "",
+                "customclassF": ""
+            },
+            "prms_task_type": {
+                "column_alias": "Type",
+                "is_primary": false,
+                "is_virtual": false,
+                "show_in_grid": false,
+                "show_in_form": false,
+                "col_order": 7,
+                "mode_form": "rw",
+                "field_type": "enum",
+                "col_options": "[{\u0022name\u0022:\u0022Plan\u0022,\u0022value\u0022:\u0022plan\u0022},{\u0022name\u0022:\u0022Dev\u0022,\u0022value\u0022:\u0022dev\u0022}]",
+                "customclassF": ""
+            },
             "state_id": {
                 "column_alias": "State id",
                 "is_primary": false,
@@ -206,7 +278,8 @@
                 "customclassF": ""
             }
         },
-        "table_icon": "\u003Ci class=\u0022fas fa-tasks\u0022\u003E\u003C\/i\u003E"
+        "table_icon": "\u003Ci class=\u0022fas fa-tasks\u0022\u003E\u003C\/i\u003E",
+        "showKids": false
     },
     "role": {
         "table_alias": "Role",
