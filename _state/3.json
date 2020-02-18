@@ -1,5 +1,5 @@
 {
-    "prms_project_name": {"mode_form": "rw"},
-    "prms_project_description": {"mode_form": "rw"},
-    "prms_project_budget": {"mode_form": "rw"}
+    "prms_project_name": {"show_in_form": true, "mode_form": "rw"},
+    "prms_project_description": {"show_in_form": true, "mode_form": "rw"}
+    "prms_project_budget": {"show_in_form": true, "mode_form": "rw"}
 }
