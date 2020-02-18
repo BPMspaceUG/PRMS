@@ -1,0 +1,2 @@
+/* Custom Scripts */
+setLang = 'en';
