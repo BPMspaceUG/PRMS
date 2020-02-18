@@ -78,7 +78,7 @@ CREATE TABLE `prms_project` (
   PRIMARY KEY (`prms_project_id`),
   KEY `state_id_01d918ae` (`state_id`),
   CONSTRAINT `state_id_01d918ae` FOREIGN KEY (`state_id`) REFERENCES `state` (`state_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -273,4 +273,4 @@ CREATE TABLE `state_rules` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-17 17:15:02
+-- Dump completed on 2020-02-18 10:44:56
