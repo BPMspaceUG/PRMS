@@ -54,7 +54,7 @@
                 "show_in_form": false,
                 "col_order": 3,
                 "mode_form": "rw",
-                "field_type": "textarea",
+                "field_type": "htmleditor",
                 "col_options": "",
                 "customclassF": ""
             },
@@ -75,10 +75,10 @@
                 "is_primary": false,
                 "is_virtual": false,
                 "show_in_grid": false,
-                "show_in_form": false,
+                "show_in_form": true,
                 "col_order": 5,
-                "mode_form": "rw",
-                "field_type": "textarea",
+                "mode_form": "ro",
+                "field_type": "rawhtml",
                 "col_options": "",
                 "customclassF": ""
             },
@@ -96,7 +96,7 @@
             }
         },
         "table_icon": "\u003Ci class=\u0022fas fa-project-diagram\u0022\u003E\u003C\/i\u003E",
-        "showKids": false
+        "showKids": true
     },
     "prms_project_task": {
         "table_alias": "Task",
@@ -212,7 +212,7 @@
                 "show_in_grid": false,
                 "show_in_form": false,
                 "col_order": 3,
-                "mode_form": "rw",
+                "mode_form": "ro",
                 "field_type": "text",
                 "col_options": "",
                 "customclassF": ""
@@ -278,8 +278,7 @@
                 "customclassF": ""
             }
         },
-        "table_icon": "\u003Ci class=\u0022fas fa-tasks\u0022\u003E\u003C\/i\u003E",
-        "showKids": false
+        "table_icon": "\u003Ci class=\u0022fas fa-tasks\u0022\u003E\u003C\/i\u003E"
     },
     "role": {
         "table_alias": "Role",

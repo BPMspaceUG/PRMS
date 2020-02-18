@@ -1,5 +1,6 @@
 {
     "prms_project_name": {"show_in_form": true, "mode_form": "ro"},
     "prms_project_description": {"show_in_form": true, "mode_form": "ro"},
-    "prms_project_budget": {"show_in_form": true, "mode_form": "ro"}
+    "prms_project_budget": {"show_in_form": true, "mode_form": "ro"},
+    "prms_project_history": {"show_in_form": true, "mode_form": "ro"}
 }

@@ -41,7 +41,7 @@ CREATE TABLE `state` (
 
 LOCK TABLES `state` WRITE;
 /*!40000 ALTER TABLE `state` DISABLE KEYS */;
-INSERT INTO `state` VALUES (1,'new',1,1,NULL,NULL),(2,'initated',0,1,'',''),(3,'update',0,1,NULL,NULL),(4,'planned',0,1,'',''),(5,'selected',1,2,NULL,NULL),(6,'unselected',0,2,NULL,NULL),(7,'new',1,3,NULL,NULL),(8,'active',0,3,NULL,NULL),(9,'update',0,3,NULL,NULL),(10,'inactive',0,3,NULL,NULL),(11,'cancel',0,1,'',''),(12,'agreed',0,1,'',''),(13,'succesfull',0,1,'',''),(14,'not succesfull',0,1,'','');
+INSERT INTO `state` VALUES (1,'new',1,1,NULL,NULL),(2,'initiated',0,1,'',''),(3,'update',0,1,NULL,NULL),(4,'planned',0,1,'',''),(5,'selected',1,2,NULL,NULL),(6,'unselected',0,2,NULL,NULL),(7,'new',1,3,NULL,NULL),(8,'active',0,3,NULL,NULL),(9,'update',0,3,NULL,NULL),(10,'inactive',0,3,NULL,NULL),(11,'cancel',0,1,'',''),(12,'agreed',0,1,'',''),(13,'succesfull',0,1,'',''),(14,'not succesfull',0,1,'','');
 /*!40000 ALTER TABLE `state` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -113,4 +113,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-18 15:01:34
+-- Dump completed on 2020-02-18 15:49:30
