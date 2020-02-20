@@ -21,10 +21,10 @@ services:
     volumes:
     - PRMS_DEV_mariadb10:/var/lib/mysql
     environment:
-    - MYSQL_ROOT_PASSWORD=test
-    - MYSQL_DATABASE=test
-    - MYSQL_USER=test
-    - MYSQL_PASSWORD=test
+    - MYSQL_ROOT_PASSWORD=bpmspace7603476
+    - MYSQL_DATABASE=bpmspace_prms_v1
+    - MYSQL_USER=bpmspace_prms_v1
+    - MYSQL_PASSWORD=bpmspace7603476
     networks:
       - proxy-net 
     deploy:
@@ -39,10 +39,10 @@ services:
     volumes:
     - PRMS_DEV_liam3_mariadb10:/var/lib/mysql
     environment:
-    - MYSQL_ROOT_PASSWORD=test
-    - MYSQL_DATABASE=test
-    - MYSQL_USER=test
-    - MYSQL_PASSWORD=test
+    - MYSQL_ROOT_PASSWORD=bpmspace7603476
+    - MYSQL_DATABASE=bpmspace_liam3_v1
+    - MYSQL_USER=bpmspace_liam3_v1
+    - MYSQL_PASSWORD=bpmspace7603476
     networks:
       - proxy-net 
     deploy:
@@ -57,8 +57,8 @@ services:
     environment:
     - PMA_HOST=PRMS_DEV_mariadb10
     - PMA_PORT=3306
-    - PMA_USER=test
-    - PMA_PASSWORD=test
+    - PMA_USER=bpmspace_prms_v1
+    - PMA_PASSWORD=bpmspace7603476
     deploy:
       labels:
         - traefik.enable=true
@@ -77,8 +77,8 @@ services:
     environment:
     - PMA_HOST=PRMS_DEV_liam3_mariadb10
     - PMA_PORT=3306
-    - PMA_USER=test
-    - PMA_PASSWORD=test
+    - PMA_USER=bpmspace_liam3_v1
+    - PMA_PASSWORD=bpmspace7603476
     deploy:
       labels:
         - traefik.enable=true
@@ -132,7 +132,7 @@ services:
     image: bpmspace/prms:prms_dev-development_server_master
     hostname: PRMS_DEV_server
     volumes:
-    - PRMS_DEV_server:/var/www/html
+    - PRMS_DEV_server:/var/www/html/prms
     depends_on:
     - PRMS_DEV_mariadb10
     environment:
@@ -170,9 +170,9 @@ services:
     ports:
         - "7373:22"
     volumes:
-    - PRMS_DEV_liam3_server:/home/develop/PRMS_DEV_liam3_server
-    - PRMS_DEV_liam3_client:/home/develop/PRMS_DEV_liam3_client
-    - PRMS_DEV_server:/home/develop/PRMS_DEV_server
+    - PRMS_DEV_liam3_server:/home/developer/PRMS_DEV_liam3_server
+    - PRMS_DEV_liam3_client:/home/developer/PRMS_DEV_liam3_client
+    - PRMS_DEV_server:/home/developer/PRMS_DEV_server
     deploy:
       placement:
         constraints: [node.role == manager]
