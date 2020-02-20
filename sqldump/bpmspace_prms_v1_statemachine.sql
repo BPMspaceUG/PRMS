@@ -1,6 +1,6 @@
 -- MySQL dump 10.16  Distrib 10.1.33-MariaDB, for Win32 (AMD64)
 --
--- Host: localhost    Database: prms
+-- Host: localhost    Database: bpmspace_prms_v1
 -- ------------------------------------------------------
 -- Server version	10.1.33-MariaDB
 
@@ -101,7 +101,7 @@ INSERT INTO `state_rules` VALUES (1,1,1,'include_once(__DIR__.\'/../_state_rules
 UNLOCK TABLES;
 
 --
--- Dumping routines for database 'prms'
+-- Dumping routines for database 'bpmspace_prms_v1'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -113,4 +113,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-19 11:30:54
+-- Dump completed on 2020-02-19 16:50:54
