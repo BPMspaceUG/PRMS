@@ -135,7 +135,7 @@ services:
     image: bpmspace/prms:prms_dev-development_server_master
     hostname: PRMS_DEV_server
     volumes:
-    - PRMS_DEV_server:/var/www/html/prms
+    - PRMS_DEV_server:/var/www/html/
     depends_on:
     - PRMS_DEV_mariadb10
     environment:
