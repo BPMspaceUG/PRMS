@@ -170,7 +170,7 @@ services:
   PRMS_DEV_sftp:
     image: atmoz/sftp
     hostname: PRMS_DEV_sftp
-    command: developer:pass:1001
+    command: developer:pass:1001 &&  sh -c "chown -R developer /home/developer/* && adduser developer www-data"
     ports:
         - "7373:22"
     volumes:
