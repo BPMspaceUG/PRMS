@@ -169,7 +169,7 @@ services:
   PRMS_DEV_sftp:
     image: bpmspace/docker_bpmspace_base:atmoz_sftp
     hostname: PRMS_DEV_sftp
-    command: developer:pass:1001
+    command: developer:pass:33
     depends_on:
     - PRMS_DEV_liam3_server
     - PRMS_DEV_liam3_client
